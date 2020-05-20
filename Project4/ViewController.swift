@@ -22,8 +22,20 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let url = URL(string: "https://www.hackingwithswift.com")!
-        webView.load(URLRequest(url: url))
+        //let url = URL(string: "https://www.hackingwithswift.com")!
+        //webView.load(URLRequest(url: url))
+        
+        webView.load(URLRequest(url: URL(fileURLWithPath: Bundle.main.path(forResource: "test/index", ofType: "html")!)))
+        
+        //let urlpath = Bundle.main.path(forResource: "index", ofType: "html");
+        //let requesturl = URL(string: urlpath!)
+        //let request = URLRequest(url: requesturl!)
+        //webView.load(request)
+        
+        //if let path = Bundle.main.path(forResource: "index", ofType: "html", inDirectory: "test") {
+        //    webView.load(URLRequest(url: URL(fileURLWithPath: path)) )
+        //}
+        
         webView.allowsBackForwardNavigationGestures = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
@@ -31,6 +43,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     @objc func openTapped() {
         let ac = UIAlertController(title: "Open page…", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "textrecipe.io/2020/05/18/sk-ad-server-html5-player-embed/", style: .default, handler: openPage))
         ac.addAction(UIAlertAction(title: "www.youtube.com/watch?v=_8mGq9DLByE", style: .default, handler: openPage))
         ac.addAction(UIAlertAction(title: "vimeo.com/410011254", style: .default, handler: openPage))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
